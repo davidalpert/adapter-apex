@@ -1,4 +1,4 @@
-# Logur adapter for TEMPLATE
+# Logur adapter for `apex/log`
 
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/logur/adapter-apex/CI?style=flat-square)](https://github.com/logur/adapter-apex/actions?query=workflow%3ACI)
 [![Codecov](https://img.shields.io/codecov/c/github/logur/adapter-apex?style=flat-square)](https://codecov.io/gh/logur/adapter-apex)
@@ -16,18 +16,52 @@ go get logur.dev/adapter/apex
 
 ## Usage
 
+With no initial context:
 ```go
 package main
 
 import (
-	apexadapter "logur.dev/adapter/apex"
+  apexadapter "logur.dev/adapter/apex"
 )
 
 func main() {
-	logger := apexadapter.New(/*logger*/)
+  logger := apexadapter.New()
 }
 ```
 
+With existing fields:
+```go
+package main
+
+import (
+  "github.com/apex/log"
+  apexadapter "logur.dev/adapter/apex"
+)
+
+func main() {
+  logger := apexadapter.NewFromFields(log.Fields{
+    "hostname": "localhost",
+  })
+}
+```
+
+With an existing entry:
+```go
+package main
+
+import (
+  "github.com/apex/log"
+  apexadapter "logur.dev/adapter/apex"
+)
+
+func main() {
+  entry := log.WithFields(log.Fields{
+    "hostname": "localhost",
+  })
+
+  logger := apexadapter.NewFromEntry(entry)
+}
+```
 
 ## Development
 

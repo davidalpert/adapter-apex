@@ -21,10 +21,9 @@ func TestLogger(t *testing.T) {
 
 	suite := conformance.TestSuite{
 		LoggerFactory: func(level logur.Level) (logur.Logger, conformance.TestLogger) {
-			var logger interface{}
 			_ = levelMap
 
-			return New(logger), conformance.TestLoggerFunc(func() []logur.LogEvent {
+			return New(), conformance.TestLoggerFunc(func() []logur.LogEvent {
 				return []logur.LogEvent{}
 			})
 		},

@@ -1,20 +1,33 @@
 package apex_test
 
 import (
+	"github.com/apex/log"
+
 	apexadapter "logur.dev/adapter/apex"
 )
 
 func ExampleNew() {
-	var l interface{}
-	logger := apexadapter.New(l)
+	logger := apexadapter.New()
 
 	// Output:
 	_ = logger
 }
 
-// If logger is nil, a default instance is created.
-func ExampleNew_default() {
-	logger := apexadapter.New(nil)
+func ExampleNewFromFields() {
+	logger := apexadapter.NewFromFields(log.Fields{
+		"name": "mal",
+	})
+
+	// Output:
+	_ = logger
+}
+
+func ExampleNewFromEntry() {
+	entry := log.WithFields(log.Fields{
+		"name": "mal",
+	})
+
+	logger := apexadapter.NewFromEntry(entry)
 
 	// Output:
 	_ = logger
