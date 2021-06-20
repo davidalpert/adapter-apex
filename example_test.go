@@ -1,12 +1,12 @@
-package template_test
+package apex_test
 
 import (
-	templateadapter "logur.dev/adapter/template"
+	apexadapter "logur.dev/adapter/apex"
 )
 
 func ExampleNew() {
 	var l interface{}
-	logger := templateadapter.New(l)
+	logger := apexadapter.New(l)
 
 	// Output:
 	_ = logger
@@ -14,7 +14,7 @@ func ExampleNew() {
 
 // If logger is nil, a default instance is created.
 func ExampleNew_default() {
-	logger := templateadapter.New(nil)
+	logger := apexadapter.New(nil)
 
 	// Output:
 	_ = logger

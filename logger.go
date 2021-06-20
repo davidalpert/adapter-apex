@@ -1,5 +1,5 @@
-// Package template provides a Logur adapter for TEMPLATE.
-package template
+// Package apex provides a Logur adapter for TEMPLATE.
+package apex
 
 import (
 	"context"
